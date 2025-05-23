@@ -27,7 +27,7 @@ def create_program():
         }),HTTP_400_BAD_REQUEST
     
     # Creating the  new program 
-    new_program = Program(program_name=program_name,program_address=program_address)
+    new_program = Program(program_name=program_name,program_address=program_address,created_at= created_at,updated_at=updated_at)
 
     # Adding thenew program to the database
     db.session.add(new_program)
