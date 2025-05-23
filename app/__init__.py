@@ -1,5 +1,9 @@
 from flask import Flask
 from app.extensions import db,migrate
+from flask import Blueprint
+from app.controllers.program.program_controller import program
+from app.controllers.student.student_controller import student
+from app.controllers.course.course_controller import course
 
 
 #application factory function
@@ -11,6 +15,18 @@ def create_app():
     
     db.init_app(app)
     migrate.init_app(app,db)
+
+
+    # Import the models
+    from app.models.course.course_model import Course
+    from app.models.program.program_model import Program
+    from app.models.student.student_model import Student
+
+    # Register the blue prints
+    app.register_blueprint(program)
+    app.register_blueprint(student)
+    app.register_blueprint(course)
+
 
 
     @app.route("/")
