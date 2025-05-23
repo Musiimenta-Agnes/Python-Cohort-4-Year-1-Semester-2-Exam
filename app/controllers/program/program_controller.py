@@ -16,6 +16,8 @@ def create_program():
     data = request.json
     program_name= data.get('program_name')
     program_address = data.get('program_address')
+    created_at = data.get('created_at')
+    updated_at = data.get('updated _at')
 
 
     # verifying the details
@@ -35,7 +37,11 @@ def create_program():
     return jsonify({
         'message': new_program.program_name + 'has successufully been created',
         'program_name': new_program.program_name,
-        'program_address': new_program.program_address
+        'program_address': new_program.program_address,
+        'created_at': new_program.created_at,
+        'updated_at': new_program.updated_at
+        
+
     }),HTTP_200_OK
 
 
@@ -57,10 +63,14 @@ def update_program(program_id):
         else:
             program_name = request.get_json().get('program_name', program.program_name)
             program_address = request.get_json().get('program_address', program.program_address)
+            created_at = request.get_json().get('created_at', program.created_at)
+            updated_at= request.get_json().get('updated_at', program.updated_at)
 
             # Updating the data
             program.program_name = program_name
             program.program_address = program_address
+            program.created_at = created_at
+            program.updated_at = updated_at
 
             # Commiting the updated data
             db.session.commit()
@@ -69,7 +79,8 @@ def update_program(program_id):
             return jsonify({
                 'message': 'The program data has successifully been updated',
                 'program_name': program.program_name,
-                'program_address': program.program_address
+                'program_address': program.program_address,
+                'craeted_at': program.created_at
             })
 
     except Exception as e:
