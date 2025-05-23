@@ -10,8 +10,8 @@ class Student(db.Model):
     student_name = db.Column(db.String(255), nullable = False)
     student_email = db.Column(db.String(255), nullable = False, unique = True)
     password = db.Column(db.String(255), nullable = False)
-    program_id = db.Column(db.String(255),db.ForeignKey('programs.program_id'))
-    program = db.relationship('Program',backref = 'students')
+    # program_id = db.Column(db.String(255),db.ForeignKey('programs.program_id'))
+    # program = db.relationship('Program',backref = 'students')
     created_at = db.Column(db.DateTime, default = datetime.now())   # This is a time stamp
     updated_at = db.Column(db.DateTime, onupdate = datetime.now())
 
