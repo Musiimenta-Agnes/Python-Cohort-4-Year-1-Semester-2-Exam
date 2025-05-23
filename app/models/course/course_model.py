@@ -8,7 +8,8 @@ class Course(db.Model):
     course_id = db.Column(db.String(255), nullable = False, primary_key = True, unique = True)
     course_name = db.Column(db.String(255), nullable = False)
     course_instructor = db.Column(db.String(255), nullable = False)
-    program_id = db.Column(db.String(255), nullable = False, foreign_key = True)
+    program_id = db.Column(db.String(255),db.ForeignKey('programs.program_id'))
+    program = db.relationship('Program',backref = 'courses')
     created_at = db.Column(db.DateTime, default = datetime.now())   # This is a time stamp
     updated_at = db.Column(db.DateTime, onupdate = datetime.now())
 
