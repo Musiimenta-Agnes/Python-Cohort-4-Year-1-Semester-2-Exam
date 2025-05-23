@@ -18,8 +18,8 @@ def create_student():
     student_email = data.get('student_email ')
     password = data.get('password ')
     student_contact = data.get('student_contact ')
-    # program_id = data.get('program_id')
-    # program = Program.query.get(program_id)
+    program_id = data.get('program_id')
+    program = Program.query.get(program_id)
 
     # Verification of the details
     if not student_name or not student_email or not password or not student_contact:
@@ -66,7 +66,7 @@ def create_student():
               'student_email': new_data.student_email,
               'password': new_data.password,
               'student_contact': new_data.student_contact,
-            #   'program_id': new_data.program_id
+              'program_id': new_data.program_id
          }),HTTP_200_OK
 
     except Exception as e:
