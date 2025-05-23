@@ -18,11 +18,11 @@ def create_student():
     student_email = data.get('student_email ')
     password = data.get('password ')
     student_contact = data.get('student_contact ')
-    program_id = data.get('program_id')
-    program = Program.query.get(program_id)
+    # program_id = data.get('program_id')
+    # program = Program.query.get(program_id)
 
     # Verification of the details
-    if not student_name or not student_email or not password or not student_contact or not program_id:
+    if not student_name or not student_email or not password or not student_contact:
         return jsonify({
             'error':'All fields are required!'
         }),HTTP_400_BAD_REQUEST
@@ -66,7 +66,7 @@ def create_student():
               'student_email': new_data.student_email,
               'password': new_data.password,
               'student_contact': new_data.student_contact,
-              'program_id': new_data.program_id
+            #   'program_id': new_data.program_id
          }),HTTP_200_OK
 
     except Exception as e:
@@ -91,7 +91,7 @@ def get_all_student():
               'student_email':student.student_email,
               'password': student.password,
               'student_contact': student.student_contact,
-              'program_id': student.program_id
+            #   'program_id': student.program_id
           }
 
           student_data.append(student_information)

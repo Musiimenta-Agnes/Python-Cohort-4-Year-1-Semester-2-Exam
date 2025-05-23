@@ -80,7 +80,8 @@ def update_program(program_id):
                 'message': 'The program data has successifully been updated',
                 'program_name': program.program_name,
                 'program_address': program.program_address,
-                'craeted_at': program.created_at
+                'craeted_at': program.created_at,
+                'updated_at': program.updated_at
             })
 
     except Exception as e:
